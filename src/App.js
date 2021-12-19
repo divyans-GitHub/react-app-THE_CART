@@ -1,10 +1,12 @@
 import React from 'react';
 
+import CartItem from './CartItem';
+
 function App() {
   
   return (
     <React.Fragment>
-      <h1>hey there! CART</h1>
+      <CartItem />
 
     </React.Fragment>
   );
