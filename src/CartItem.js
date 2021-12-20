@@ -10,31 +10,49 @@ class CartItem extends React.Component{
       qty: 1,
       img: ''
     }
+    // this.increaseQuantity = this.increaseQuantity.bind(this)   //this is second approach.third using arrow func.
+  }
+  increaseQuantity = () =>{
+    console.log('this' , this );
+    console.log('this.state.qty is: ' , this.state.qty );
   }
 
 
     render(){
       const {price , title , qty} = this.state;
-        return(
-         <div className='cart-item'>
-           <div className='left-block'>
-               <img  style={styles.image} alt='item-pic'/>
-           </div>
-           <div className='right-block'>
-              <div className='info' style={{fontSize:25}}> {title} <br /> Apple PhoneXI  </div>
-              <div className='price' style={{fontSize:20}}>Rs. {price}/- </div>
-              <div className='quantity'>Qty: {qty}</div>
-              <div className='cart-item-actions'>
-                {/* buttons: increase, decrease , delete */}
-                <img alt='increase' className='action-icons' src='https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg'/>
-                <img alt='decrease' className='action-icons' src='https://t3.ftcdn.net/jpg/03/73/49/86/240_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg' />
-                <img alt='delete' className='action-icons' src='https://cdn-icons.flaticon.com/png/128/484/premium/484611.png?token=exp=1639895864~hmac=a4c3ce11b01006287ecddaa2d9234144' />
-              </div>
-            </div>
+      return(
+        <div className='cart-item'>
+          <div className='left-block'>
+          <img  style={styles.image} alt='item-pic'/>
+          </div>
+          <div className='right-block'>
+            <div className='info' style={{fontSize:25}}> {title} <br /> Apple PhoneXI  </div>
+            <div className='price' style={{fontSize:20}}>Rs. {price}/- </div>
+            <div className='quantity'>Qty: {qty}</div>
+            <div className='cart-item-actions'>
+            {/* buttons: increase, decrease , delete */}
+            <img 
+              alt='increase' 
+              className='action-icons' 
+              src='https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg'
+              onClick={this.increaseQuantity}
+            />
+            <img 
+              alt='decrease' 
+              className='action-icons' 
+              src='https://t3.ftcdn.net/jpg/03/73/49/86/240_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg' 
+            />
+            <img 
+              alt='delete' 
+              className='action-icons' 
+              src='https://t4.ftcdn.net/jpg/01/90/89/15/240_F_190891550_N7uKp2aHE3mOc20dmtDytj7atgvbhdOu.jpg' 
+            />
+          </div>
+          </div>
 
-         </div>
+        </div>
 
-        );
+      );
     }
 }
 
