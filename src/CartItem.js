@@ -11,28 +11,63 @@ class CartItem extends React.Component{
       img: ''
     }
     // this.increaseQuantity = this.increaseQuantity.bind(this)   //this is second approach.third using arrow func.
+    //this.testing();
   }
+
+  // lets test setState function in Promises
+  // testing(){
+
+  //   const promise = new Promise( (resolve , reject) => {
+  //   // setTimeout(()=>{
+  //   //  resolve('done');
+  //   // } , 5000);
+  //   resolve()
+  //   })
+
+  //   promise.then( ()=>{
+  //     this.setState({qty: this.state.qty + 100});
+  //     this.setState({qty: this.state.qty + 100});
+  //     this.setState({qty: this.state.qty + 100});
+      
+  //     console.log('this.state is: ' , this.state);
+  //   });
+  // }
+
+
+
+
+
+
   increaseQuantity = () =>{
     // this.state.qty += 1;
     // console.log('this.state.qty is: ' , this.state.qty );
     //1. Ist way to call setState 
     // this.setState({
     //   qty: this.state.qty + 1
+      
     // });
+    
     //2. when we need previous state:
     this.setState((prevState) =>{
       return {
       qty: prevState.qty + 1
       }
     })
+    console.log("THIS.STATE " , this.state);
+    //browser qty number didnot match with qty we printed on the console, since setState function is asynchronous
   }
   decreaseQuantity = () =>{
+    const {qty} = this.state;
+    if(qty === 0 ){
+      return;
+    }
     this.setState({
       qty: this.state.qty - 1
     })
   }
 
     render(){
+      console.log('render called');
       const {price , title , qty} = this.state;
       return(
         <div className='cart-item'>
