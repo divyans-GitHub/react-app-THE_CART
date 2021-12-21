@@ -2,17 +2,17 @@ import React from 'react';
 
 class CartItem extends React.Component{
   
-  constructor(){
-    super();
-    this.state = {
-      price: 99990,
-      title: 'Phone',
-      qty: 1,
-      img: ''
-    }
-    // this.increaseQuantity = this.increaseQuantity.bind(this)   //this is second approach.third using arrow func.
-    //this.testing();
-  }
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     price: 99990,
+  //     title: 'Phone',
+  //     qty: 1,
+  //     img: ''
+  //   }
+  //   // this.increaseQuantity = this.increaseQuantity.bind(this)   //this is second approach.third using arrow func.
+  //   //this.testing();
+  // }
 
   // lets test setState function in Promises
   // testing(){
@@ -67,8 +67,9 @@ class CartItem extends React.Component{
   }
 
     render(){
-      console.log('render called');
-      const {price , title , qty} = this.state;
+      //console.log('render called');
+      console.log("this.props" , this.props );
+      const {price , title , qty} = this.props.product;
       return(
         <div className='cart-item'>
           <div className='left-block'>
