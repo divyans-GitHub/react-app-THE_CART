@@ -38,7 +38,7 @@ class CartItem extends React.Component{
 
 
 
-  increaseQuantity = () =>{
+ //increaseQuantity = () =>{
     // this.state.qty += 1;
     // console.log('this.state.qty is: ' , this.state.qty );
     //1. Ist way to call setState 
@@ -48,23 +48,23 @@ class CartItem extends React.Component{
     // });
     
     //2. when we need previous state:
-    this.setState((prevState) =>{
-      return {
-      qty: prevState.qty + 1
-      }
-    })
-    console.log("THIS.STATE " , this.state);
+    // this.setState((prevState) =>{
+    //   return {
+    //   qty: prevState.qty + 1
+    //   }
+    // })
+    // console.log("THIS.STATE " , this.state);
     //browser qty number didnot match with qty we printed on the console, since setState function is asynchronous
-  }
-  decreaseQuantity = () =>{
-    const {qty} = this.state;
-    if(qty === 0 ){
-      return;
-    }
-    this.setState({
-      qty: this.state.qty - 1
-    })
-  }
+  //}
+  // decreaseQuantity = () =>{
+  //   const {qty} = this.state;
+  //   if(qty === 0 ){
+  //     return;
+  //   }
+  //   this.setState({
+  //     qty: this.state.qty - 1
+  //   })
+  // }
 
     render(){
       //console.log('render called');
@@ -85,7 +85,7 @@ class CartItem extends React.Component{
               alt='increase' 
               className='action-icons' 
               src='https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg'
-              onClick={this.increaseQuantity}
+              onClick={()=> this.props.onIncreaseQty(this.props.product)}
             />
             <img 
               alt='decrease' 
