@@ -36,7 +36,7 @@ class Cart extends React.Component{
    }
 
    handleIncreaseQuantity= (product) => {
-    console.log("increase qty request has been reached successfully on product: " , product);
+    //console.log("increase qty request has been reached successfully on product: " , product);
 
     const {products} = this.state;
     const index = products.indexOf(product);
@@ -46,7 +46,31 @@ class Cart extends React.Component{
     })
 
    }
+   handleDecreaseQuantity = (product) => {
+    console.log('decrease quantity req recieved');
+    
+    const{products} = this.state;
+    const index = products.indexOf(product);
+    if(products[index].qty === 0 ) {return;}
 
+    products[index].qty -= 1
+
+    this.setState({
+        products: products
+    })
+
+   }
+
+   deleteCartItem = (id) => {
+    const {products} = this.state;
+    
+    const itemsToKeep = products.filter( (product) => product.id !== id  ); //[{}]
+    //console.log( "*" , itemsToKeep);
+    this.setState({
+        products: itemsToKeep
+    })
+   }
+   
 
    render(){
      const {products} = this.state;
@@ -61,6 +85,8 @@ class Cart extends React.Component{
                 product={product}  
                 key={product.id} 
                 onIncreaseQty={this.handleIncreaseQuantity}
+                onDecreaseQty = {this.handleDecreaseQuantity}
+                onDeleteItem={this.deleteCartItem}
             />
             )
         })}
