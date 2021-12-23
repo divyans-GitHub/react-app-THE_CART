@@ -6,7 +6,7 @@ import React from 'react';
       <div style={styles.nav}></div>
         <div>
             <img style={styles.cartIcon} src='https://t3.ftcdn.net/jpg/01/13/95/02/240_F_113950213_2znQQrapC21FcNXfvqwjnXm5gs6jDi06.jpg' alt='cart-icon'  />
-            <span style={styles.itemNumber}>3</span>
+            <span style={styles.itemNumber}> {props.count} </span>
         </div>
     </div>
     );
