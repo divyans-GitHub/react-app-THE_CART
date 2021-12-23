@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CartItem extends React.Component{
+const CartItem = (props) => {
   
   // constructor(){
   //   super();
@@ -66,15 +66,15 @@ class CartItem extends React.Component{
   //   })
   // }
 
-    render(){
+    //render(){
       //console.log('render called');
-      console.log("this.props" , this.props );
-      const {price , title , qty} = this.props.product;
+      console.log("this.props" , props );
+      const {price , title , qty} = props.product;
       const {
         product,
         onDecreaseQty,
         onDeleteItem 
-      } = this.props;
+      } = props;
 
       return(
         <div className='cart-item'>
@@ -91,7 +91,7 @@ class CartItem extends React.Component{
               alt='increase' 
               className='action-icons' 
               src='https://as2.ftcdn.net/v2/jpg/01/07/62/07/1000_F_107620769_UwNVSoXnKS4VNcOKoZjPohlEPn83oE38.jpg'
-              onClick={()=> this.props.onIncreaseQty(this.props.product)}
+              onClick={()=> props.onIncreaseQty(props.product)}
             />
             <img 
               alt='decrease' 
@@ -111,7 +111,7 @@ class CartItem extends React.Component{
         </div>
 
       );
-    }
+    //}
 }
 
 
