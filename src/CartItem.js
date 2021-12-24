@@ -79,7 +79,7 @@ const CartItem = (props) => {
       return(
         <div className='cart-item'>
           <div className='left-block'>
-          <img  style={styles.image} alt='item-pic'/>
+          <img  style={styles.image} alt='item-pic' src={props.product.img} />
           </div>
           <div className='right-block'>
             <div className='info' style={{fontSize:25}}> {title} <br /> Apple PhoneXI  </div>
@@ -117,10 +117,10 @@ const CartItem = (props) => {
 
 const styles = {
   image: {
-    height:100,
-    width:100,
+    height: '100%',
+    width: 179,
     borderRadius:3,
-    backgroundColor: '#ccc'
+   
 
   }
 }

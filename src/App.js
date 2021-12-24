@@ -14,21 +14,21 @@ class App extends React.Component {
         title: 'MOBILE PHONE',
         price: 9900,
         qty: 11,
-        img: '',
+        img: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aXBob25lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
         id: 1
       },
       {
         title: 'SMART WATCH',
         price: 12000,
         qty: 10,
-        img: '',
+        img: 'https://images.unsplash.com/photo-1551816230-ef5deaed4a26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c21hcnQlMjB3YXRjaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
         id: 2
       },
       {
         title: 'IPAD PRO MAX',
         price: 100000,
         qty: 1,
-        img: '',
+        img: 'https://images.unsplash.com/photo-1637152736123-8a027366b07a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGlwYWQlMjBwcm8lMjBtYXh8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
         id: 3
       }
     ]
@@ -42,7 +42,7 @@ class App extends React.Component {
   const index = products.indexOf(product);
   products[index].qty += 1
   this.setState({
-      products: products
+    products: products
   })
 
   }
@@ -56,7 +56,7 @@ class App extends React.Component {
   products[index].qty -= 1
 
   this.setState({
-      products: products
+    products: products
   })
 
   }
