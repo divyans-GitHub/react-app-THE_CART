@@ -11,8 +11,8 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-
+//import { getFirestore,  getDocs } from 'firebase/firestore/lite';
+import {  getFirestore,collection , query ,where ,onSnapshot   } from 'firebase/firestore';
 
 
 
@@ -53,14 +53,39 @@ class App extends React.Component {
   //accesing firestore DB for products
   componentDidMount(){
    
-   const collectionRef = collection(db , 'products');
-   const promise = getDocs(collectionRef);
+    //  const collectionRef = collection(db , 'products');
+    
+    //  const promise = getDocs(collectionRef);
 
-    promise.then( (snapshot) => {
+    //   promise.then( (snapshot) => {
+      
+    //     snapshot.docs.map( (doc)=>{
+    //      //console.log("HERE IS DOC: ",doc);
+    //      //console.log(doc.data());
+    //      return "";
+    //     } );
+
+    //     const products = snapshot.docs.map( (doc) => {
+    //       let obj = doc.data();
+    //       obj["id"] = doc.id;
+    //       return obj;
+          
+    //     } );
+
+    //     this.setState({
+    //       products:products,
+    //       loading: false
+    //     })
+
+    //   })
+    
+  
+  
+    onSnapshot(collection(db , 'products') ,  (snapshot) => {
      
       snapshot.docs.map( (doc)=>{
        console.log("HERE IS DOC: ",doc);
-       console.log(doc.data());
+       //console.log(doc.data());
        return "";
       } );
 
@@ -77,7 +102,7 @@ class App extends React.Component {
       })
 
     })
-
+  
   }
 
 
