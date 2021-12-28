@@ -82,7 +82,7 @@ const CartItem = (props) => {
           <img  style={styles.image} alt='item-pic' src={props.product.img} />
           </div>
           <div className='right-block'>
-            <div className='info' style={{fontSize:25}}> {title} <br /> Apple PhoneXI  </div>
+            <div className='info' style={{fontSize:25}}> {title} <br /> see more...</div>
             <div className='price' style={{fontSize:20}}>Rs. {price}/- </div>
             <div className='quantity'>Qty: {qty}</div>
             <div className='cart-item-actions'>

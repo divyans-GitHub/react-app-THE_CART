@@ -12,7 +12,7 @@ import { initializeApp } from "firebase/app";
 
 
 //import { getFirestore,  getDocs } from 'firebase/firestore/lite';
-import {  getFirestore,collection , query ,where ,onSnapshot   } from 'firebase/firestore';
+import {  getFirestore,collection , setDoc ,onSnapshot  , doc } from 'firebase/firestore';
 
 
 
@@ -52,7 +52,7 @@ class App extends React.Component {
 
   //accesing firestore DB for products
   componentDidMount(){
-   
+   console.log("component did mount is called");
     //  const collectionRef = collection(db , 'products');
     
     //  const promise = getDocs(collectionRef);
@@ -83,6 +83,7 @@ class App extends React.Component {
   
     onSnapshot(collection(db , 'products') ,  (snapshot) => {
      
+      console.log("onSnapshot is called");
       snapshot.docs.map( (doc)=>{
        console.log("HERE IS DOC: ",doc);
        //console.log(doc.data());
@@ -169,6 +170,22 @@ class App extends React.Component {
     });
     return totalPrice;
   }
+  
+  addCartItem = () => {
+    setDoc(doc(collection(db , 'products')) , {
+      title: "Washing Machine",
+      qty:2,
+      price: 15679,
+      img: 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR5A5TTUoEghtH4NxAFTisLk6WTkXzsfVlXlj-hR6NilCkf9XdX87BlYyH4g9FY5cyNiL5CJKBfvis&usqp=CAc'
+    } ).then( (docRef)=> {
+      console.log("a document has been added :" , docRef);
+    }).catch((err)=>{
+      console.log("there is an error: " , err );
+    })
+
+
+  }
+
 
 
   render(){
@@ -177,6 +194,7 @@ class App extends React.Component {
     return (
     <React.Fragment>
       <Navbar count={this.getTotalItemsCount()} />
+      <button onClick={this.addCartItem} style={{fontsize: 20,padding:10 , color: 'white' , background: 'blue' , float: 'right' , cursor: 'pointer'}}>Add An Item</button>
       <Cart 
         products={products}
         onIncreaseQty={this.handleIncreaseQuantity}
