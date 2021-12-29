@@ -12,7 +12,7 @@ import { initializeApp } from "firebase/app";
 
 
 //import { getFirestore,  getDocs } from 'firebase/firestore/lite';
-import {  getFirestore,collection , setDoc ,onSnapshot  , doc } from 'firebase/firestore';
+import {  getFirestore,collection , setDoc ,onSnapshot  , doc , updateDoc } from 'firebase/firestore';
 
 
 
@@ -118,10 +118,18 @@ class App extends React.Component {
 
   const {products} = this.state;
   const index = products.indexOf(product);
-  products[index].qty += 1
-  this.setState({
-    products: products
-  })
+  // products[index].qty += 1
+  // this.setState({
+  //   products: products
+  // })
+  
+  const docRef = doc(db , 'products' , products[index].id );
+  //console.log("docRef is :::" , docRef);
+  updateDoc(docRef , {
+    qty: products[index].qty + 1
+  }).then(()=>{
+    console.log("successfully updated");
+  }).catch((err)=>{console.log("there is err :" , err)})
 
   }
   handleDecreaseQuantity = (product) => {
