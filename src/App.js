@@ -12,7 +12,7 @@ import { initializeApp } from "firebase/app";
 
 
 //import { getFirestore,  getDocs } from 'firebase/firestore/lite';
-import {  getFirestore,collection , setDoc ,onSnapshot  , doc , updateDoc } from 'firebase/firestore';
+import {  getFirestore,collection , setDoc ,onSnapshot  , doc , updateDoc ,deleteDoc } from 'firebase/firestore';
 
 
 
@@ -139,22 +139,36 @@ class App extends React.Component {
   const index = products.indexOf(product);
   if(products[index].qty === 0 ) {return;}
 
-  products[index].qty -= 1
+  // products[index].qty -= 1
 
-  this.setState({
-    products: products
-  })
+  // this.setState({
+  //   products: products
+  // })
+  
+  const docRef = doc(db , 'products' , products[index].id );
+  updateDoc(docRef , {
+    qty: products[index].qty - 1
+  }).then(()=>{console.log("decrement in qty has been done successfully")});
+
 
   }
 
   deleteCartItem = (id) => {
-  const {products} = this.state;
+  //const {products} = this.state;
   
-  const itemsToKeep = products.filter( (product) => product.id !== id  ); //[{}]
-  //console.log( "*" , itemsToKeep);
-  this.setState({
-      products: itemsToKeep
+  // const itemsToKeep = products.filter( (product) => product.id !== id  ); //[{}]
+  // //console.log( "*" , itemsToKeep);
+  // this.setState({
+  //     products: itemsToKeep
+  // })
+
+  const docRef = doc(db , 'products' , id );
+  deleteDoc(docRef).then(()=>{
+    console.log("deleted from firestore successfully!");
+  }).catch((err) =>{
+    console.log("error is: " , err );
   })
+
   }
   
 
